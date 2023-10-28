@@ -1,6 +1,6 @@
-# 2daw-m12-projecte1
+# 2daw-m12-p1-s1-examples
 
-Codi d'exemple que serveix de suport per la part backend pel projecte 1 del M12 de 2n de DAW.
+Exemples de suport per l'sprint 1 del projecte 1 dins del mòdul de projecte (M12) de 2n de DAW.
 
 ## Setup
 
@@ -66,8 +66,3 @@ Des de l'opció de `Run and Debug`, crea un fitxer animenat `launch.json` amb el
     ]
 }
 ```
-
-## Enllaços de referència:
-
-* WTForms: https://www.digitalocean.com/community/tutorials/how-to-use-and-validate-web-forms-with-flask-wtf
-* Macros amb WTForms: https://flask.palletsprojects.com/es/latest/patterns/wtforms/

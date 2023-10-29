@@ -28,11 +28,14 @@ Per desactivar l'entorn:
 
 ### Base de dades
 
-La base de dades SQLite s'ha creat amb l'script [database.sql](./sqlite/database.sql). L'usuari de prova és `mir@mir.com` amb contrasenya `patata`.
+La base de dades SQLite s'ha creat amb l'script [database.sql](./sqlite/database.sql). Hi ha dos usuaris de prova i tots dos tenen com a contrasenya `patata`:
+
+* `voltaire@mir.com` que té el rol de `viewer`, sols lectura.
+* `edison@mir.com` que té el rol `editor`, per llegir i modificar dades.
 
 ### Fitxer de configuració
 
-Crea un fitxer .env amb els paràmetres de configuració. Pots fer servir el fitxer [.env.exemple](./.env.exemple).
+Crea un fitxer `.env` amb els paràmetres de configuració. Pots fer servir el fitxer [.env.exemple](./.env.exemple).
 
 ## Run
 

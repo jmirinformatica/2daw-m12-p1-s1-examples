@@ -28,10 +28,10 @@ Per desactivar l'entorn:
 
 ### Base de dades
 
-La base de dades SQLite s'ha creat amb l'script [database.sql](./sqlite/database.sql). Hi ha dos usuaris de prova i tots dos tenen com a contrasenya `patata`:
+Crea una base de dades SQLite a partir de l'script [0_tables.sql](./sqlite/0_tables.sql). Tens una d'exemple creada amb les dades del fitxer [1_mock_data.sql](./sqlite/1_mock_data.sql). Hi ha dos usuaris de prova i tots dos tenen com a contrasenya `patata`:
 
-* `voltaire@mir.com` que té el rol de `viewer`, sols lectura.
-* `edison@mir.com` que té el rol `editor`, per llegir i modificar dades.
+* `voltaire@alumnat.cat` que té el rol de `viewer`, sols lectura.
+* `edison@alumnat.cat` que té el rol `editor`, per llegir i modificar dades.
 
 ### Fitxer de configuració
 

@@ -28,7 +28,7 @@ Per desactivar l'entorn:
 
 ### Base de dades
 
-La base de dades SQLite s'ha creat amb l'script [database.sql](./sqlite/database.sql). L'usuari de prova és `mir@mir.com` amb contrasenya `patata`.
+Crea una base de dades SQLite a partir de l'script [0_tables.sql](./sqlite/0_tables.sql). Tens una d'exemple creada amb les dades del fitxer [1_mock_data.sql](./sqlite/1_mock_data.sql). L'usuari de prova és `edison@alumnat.cat` amb contrasenya `patata`.
 
 ### Fitxer de configuració
 

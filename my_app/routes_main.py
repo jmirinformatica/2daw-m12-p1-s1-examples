@@ -1,9 +1,10 @@
 from flask import Blueprint, redirect, url_for, render_template
 from flask_login import current_user, login_required
 from .models import Item, Store
-from .forms import ItemForm, DeleteForm
+from .forms import ItemForm, DeleteForm, ContactForm
 from .helper_role import read_permission, modify_permission
 from . import db_manager as db
+from . import mail_manager as mail
 
 # Blueprint
 main_bp = Blueprint(
@@ -16,6 +17,16 @@ def init():
         return redirect(url_for('main_bp.items_list'))
     else:
         return redirect(url_for("auth_bp.login"))
+
+@main_bp.route('/contact', methods=["GET", "POST"])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        msg = form.msg.data
+        mail.send_contact_msg(msg)
+        return redirect(url_for('main_bp.contact'))
+    
+    return render_template('contact.html', form = form)
 
 @main_bp.route('/items/list')
 @read_permission.require(http_exception=403)

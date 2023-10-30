@@ -10,16 +10,15 @@
 </head>
 
 <body>
-   <h3>Login</h3>
+   <h3>Contact</h3>
 
-   <form action="/login" method = "POST">
+   <form action="/contact" method = "POST">
       {{ form.csrf_token }}
-      <p>{{ form.email.label }}: {{ form.email() }}</p>
-      <p>{{ form.password.label }}: {{ form.password() }}</p>
-      <p>{{ form.submit(value="LOGIN") }}</p>
+      <p>{{ form.msg.label }}: {{ form.msg() }}</p>
+      <p>{{ form.submit(value="ENVIA EL MISSATGE") }}</p>
    </form>
    <hr />
-   <p>Problemes, suggeriments? Ves al nostre <a href="/contact">formulari de contacte</a>.</p>
+   <p>Torna a la <a href="/">pàgina principal</a>.</p>
 </body>
 
 </html>

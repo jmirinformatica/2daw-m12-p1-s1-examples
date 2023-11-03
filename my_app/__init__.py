@@ -8,7 +8,7 @@ def create_app():
     # Construct the core app object
     app = Flask(__name__)
 
-    app.config.from_object("config.Config")
+    app.config.from_object("my_app.config.Config")
 
     # Inicialitza SQLAlchemy
     db_manager.init_app(app)

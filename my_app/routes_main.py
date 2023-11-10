@@ -2,7 +2,7 @@ from flask import Blueprint, redirect, url_for, render_template
 from flask_login import current_user, login_required
 from .models import Item, Store
 from .forms import ItemForm, DeleteForm, ContactForm
-from .helper_role import read_permission, modify_permission
+from .helper_role import require_view_permission, require_edit_permission, require_editor_role
 from . import db_manager as db
 from . import mail_manager as mail
 
@@ -29,14 +29,14 @@ def contact():
     return render_template('contact.html', form = form)
 
 @main_bp.route('/items/list')
-@read_permission.require(http_exception=403)
+@require_view_permission.require(http_exception=403)
 def items_list():
     # select amb join que retorna una llista dwe resultats
     items_with_stores = db.session.query(Item, Store).join(Store).order_by(Item.id.asc()).all()
     return render_template('items_list.html', items_with_stores = items_with_stores)
 
 @main_bp.route('/items/update/<int:item_id>',methods = ['POST', 'GET'])
-@modify_permission.require(http_exception=403)
+@require_edit_permission.require(http_exception=403)
 def items_update(item_id):
     # select amb 1 resultat
     item = db.session.query(Item).filter(Item.id == item_id).one()
@@ -62,7 +62,7 @@ def items_update(item_id):
         return render_template('items_update.html', item_id = item_id, form = form)
 
 @main_bp.route('/items/create', methods = ['POST', 'GET'])
-@modify_permission.require(http_exception=403)
+@require_edit_permission.require(http_exception=403)
 def items_create(): 
     # select que retorna una llista de resultats
     stores = db.session.query(Store).order_by(Store.id.asc()).all()
@@ -88,7 +88,7 @@ def items_create():
 
 
 @main_bp.route('/items/read/<int:item_id>')
-@read_permission.require(http_exception=403)
+@require_view_permission.require(http_exception=403)
 def items_read(item_id):
     # select amb join i 1 resultat
     (item, store) = db.session.query(Item, Store).join(Store).filter(Item.id == item_id).one()
@@ -96,7 +96,7 @@ def items_read(item_id):
     return render_template('items_read.html', item = item, store = store)
 
 @main_bp.route('/items/delete/<int:item_id>',methods = ['GET', 'POST'])
-@modify_permission.require(http_exception=403)
+@require_edit_permission.require(http_exception=403)
 def items_delete(item_id):
     # select amb 1 resultat
     item = db.session.query(Item).filter(Item.id == item_id).one()
@@ -110,3 +110,8 @@ def items_delete(item_id):
         return redirect(url_for('main_bp.items_list'))
     else: # GET
         return render_template('items_delete.html', item = item, form = form)
+
+@main_bp.route('/admin')
+@require_editor_role.require(http_exception=403)
+def admin():
+    return "<h1>✍️ Editors zone ✍️</h1><h2>Restricted area</h2>"

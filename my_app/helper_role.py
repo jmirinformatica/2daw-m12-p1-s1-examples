@@ -13,8 +13,8 @@ class Action(str, Enum):
     view = "list and read"
 
 # Needs
-__editor_role_need = ActionNeed(Role.editor)
-__viewer_role_need = ActionNeed(Role.viewer)
+__editor_role_need = RoleNeed(Role.editor)
+__viewer_role_need = RoleNeed(Role.viewer)
 
 __edit_action_need = ActionNeed(Action.edit)
 __view_action_need = ActionNeed(Action.view)
